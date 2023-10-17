@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "RAM",
+    "description": "Kingston 16GB",
+    "price": 700,
+    "img": "img1",
+    "code": "1001",
+    "stock": 98
+  },
+  {
+    "id": 2,
+    "title": "SSD",
+    "description": "WD NVMe 2TB",
+    "price": 2700,
+    "img": "img3",
+    "code": "1003",
+    "stock": 75
+  },
+  {
+    "id": 3,
+    "title": "HDD",
+    "description": "Seagate 8TB",
+    "price": 2000,
+    "img": "img4",
+    "code": "1004",
+    "stock": 12
+  }
+]
