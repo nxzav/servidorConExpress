@@ -4,27 +4,28 @@ import ProductManager from "./ProductManager.js";
 const app = express();
 const port = 8080;
 
-const products = new ProductManager('../productos.json');
+const products = new ProductManager('../productos.json'); // Se crea la clase especificando la ruta del archivo a consultar o crear (path)
 
+// Responde con un titular al no recibir ruta específica
 app.get('/', (req, res) => {
   res.send('<h1>Servidor con Express</h1>');
 });
 
 app.get('/products', (req, res) => {
-  const {limit} = req.query;
-  const productos = products.getProduct();
-  let proQty;
+  const {limit} = req.query;  // Se guarda y desestructura el query recibido
+  const productos = products.getProduct(); // Se utiliza el método para consultar los productos
+  let productsLimit;
   if (limit)
-    proQty = productos.slice(0, limit);
+    productsLimit = productos.slice(0, limit); // Si hay query, se secciona el arreglo desde el origen al valor del índice
   else
-    proQty = productos;
+    productsLimit = productos; // Si no hay query, se muestran todos los productos
   console.log('Productos mostrados:', limit);
-  return res.json(proQty);
+  return res.json(productsLimit); 
 });
 
 app.get('/products/:id', (req, res) => {
-  const { id } = req.params;
-  return res.json(products.getProductById(parseInt(id)));
+  const { id } = req.params; // Se almacena el valor del parámetro
+  return res.json(products.getProductById(parseInt(id))); // Se devuelve el producto con el método de filtro por ID
 })
 
 
