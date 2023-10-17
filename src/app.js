@@ -15,11 +15,15 @@ app.get('/products', (req, res) => {
   const {limit} = req.query;  // Se guarda y desestructura el query recibido
   const productos = products.getProduct(); // Se utiliza el método para consultar los productos
   let productsLimit;
-  if (limit)
-    productsLimit = productos.slice(0, limit); // Si hay query, se secciona el arreglo desde el origen al valor del índice
-  else
+  if (limit) {
+    productsLimit = productos.slice(0, limit);
+    console.log('Productos mostrados:', limit);
+  }
+   // Si hay query, se secciona el arreglo desde el origen al valor del índice
+  else {
     productsLimit = productos; // Si no hay query, se muestran todos los productos
-  console.log('Productos mostrados:', limit);
+  }
+  
   return res.json(productsLimit); 
 });
 
