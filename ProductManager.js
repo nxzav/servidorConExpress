@@ -1,20 +1,35 @@
+import {readFileSync, writeFileSync, existsSync} from 'node:fs';
+
 export default class ProductManager {
-  constructor() {
+  constructor(path) {
     this.products = [];
+    this.path = path;
   }
 
-  addProduct = (objeto) => {
-    const { title, description, code } = objeto;
+  readFile() {
+    try {
+      let data;
+      if (existsSync(this.path))
+    } catch(error) {
+      console.log(error);
+    }
+  }
 
-    if (!title || !description)
-      return 'Rellena todos los parámetros';
-    if (this.products.some(product => product.code === code))
-      return `El código ${code} ya está registrado`;
+  addProduct = (title, description, price, img, code, stock) => {
+    let message;
 
-      this.products.push({
+    if (this.products.some(p => p.code === code)) {
+      return `El producto con código ${code} ya se encuentra registrado.`
+    } else {
+      const newProduct = {
+        id: ++ProductManager.id,
         title,
         description,
-        code
-      })
+        price,
+        img,
+        code,
+        stock
+      }
+    }
   }
 }

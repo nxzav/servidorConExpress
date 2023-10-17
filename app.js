@@ -11,7 +11,7 @@ app.get('/products', (req, res) => {
   const {limit} = req.query;
   console.log(limit);
   return res.json();
-})
+});
 
 app.listen(port, () => {
   console.log('Server running on port ', port);
